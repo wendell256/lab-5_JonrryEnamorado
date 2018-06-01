@@ -90,6 +90,14 @@ public class Criaturas {
         this.objetos = objetos;
     }
 
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
     @Override
     public String toString() {
         return raza;

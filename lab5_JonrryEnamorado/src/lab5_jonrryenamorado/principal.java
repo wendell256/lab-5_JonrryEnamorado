@@ -18,18 +18,29 @@ import javax.swing.tree.TreePath;
  */
 public class principal extends javax.swing.JFrame {
 
+    
+        
+
     /**
      * Creates new form principal
      */
     String codigo;
-    double edad;
-    double peso = 0;
-    double pcriaturas = 0;
-    double pmundos = 0;
+        double edad;
+        double peso = 0;
+        double pcriaturas = 0;
+
+    
+
     public principal() {
+        try{
         codigo = JOptionPane.showInputDialog("Ingrese el codigo de su universo");
         edad = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la edad"));
         initComponents();
+        JOptionPane.showMessageDialog(rootPane, "BIENVENIDO AL UNIVERSO TALI! ERES UN DIOS Y ESTE UNIVERSO, EL MAS HERMOSO UNIVERSO, FUE PUESTO EN"
+                + " TUS MANOS PARA CREAR MUNDOS Y CRIATURAS.");
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
     }
 
     /**
@@ -517,52 +528,75 @@ public class principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
+        try{
         jd_cm.setModal(true);
         jd_cm.pack();
         jd_cm.setLocationRelativeTo(this);
         jd_cm.setVisible(true);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         // TODO add your handling code here:
+        try{
         jd_cc.setModal(true);
         jd_cc.pack();
         jd_cc.setLocationRelativeTo(this);
         jd_cc.setVisible(true);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
         // TODO add your handling code here:
+        try{
+        jtf_pesouni.setText(Double.toString(peso));
         jd_eu.setModal(true);
         jd_eu.pack();
         jd_eu.setLocationRelativeTo(this);
         jd_eu.setVisible(true);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
     }//GEN-LAST:event_jButton3MouseClicked
     private String[] objetos(String x) {
+        
         String tokens[] = x.split(",");
         return tokens;
     }
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
+        try{
         DefaultListModel modelo = (DefaultListModel) jl_criaturas.getModel();
         String objetos[] = objetos(jtf_objetos.getText());
-        modelo.addElement(new Criaturas(jtf_raza.getText(), (double) Integer.parseInt(jtf_energia.getText()),
-                (double) Integer.parseInt(jtf_maños.getText()),
-                jtf_region.getText(), (double) Integer.parseInt(jtf_cant.getText()), objetos, (double) Integer.parseInt(jtf_pesocriatura.getText())));
-        jl_criaturas.setModel(modelo);
-        pcriaturas = Double.parseDouble(jtf_cant.getText())*Double.parseDouble(jtf_pesocriatura.getText());
-        peso+=pcriaturas;
-        pcriaturas = 0;
-        jd_cc.dispose();
-        jtf_cant.setText("");
-        jtf_raza.setText("");
-        jtf_energia.setText("");
-        jtf_maños.setText("");
-        jtf_region.setText("");
-        
+        if ((Double.parseDouble(jtf_cant.getText()) < 0) || (Double.parseDouble(jtf_maños.getText()) < 1) || (Double.parseDouble(jtf_pesocriatura.getText()) < 1)) {
+            JOptionPane.showMessageDialog(jd_cc, "DATO NO VALIDO VUELVA A METER ESO");
+        } else {
+            modelo.addElement(new Criaturas(jtf_raza.getText(), (double) Integer.parseInt(jtf_energia.getText()),
+                    (double) Integer.parseInt(jtf_maños.getText()),
+                    jtf_region.getText(), (double) Integer.parseInt(jtf_cant.getText()), objetos, (double) Integer.parseInt(jtf_pesocriatura.getText())));
+            jl_criaturas.setModel(modelo);
+
+            jd_cc.dispose();
+            jtf_cant.setText("");
+            jtf_raza.setText("");
+            jtf_energia.setText("");
+            jtf_maños.setText("");
+            jtf_region.setText("");
+        }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
 
     }//GEN-LAST:event_jButton5MouseClicked
 
@@ -572,13 +606,23 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
+        try{
         DefaultListModel modelo = (DefaultListModel) jl_mundos.getModel();
+        if (Double.parseDouble(jtf_pesomundo.getText()) < 1) {
+            JOptionPane.showMessageDialog(jd_cm, "ERROR META ESOS DATOS BIEN");
+        } else {
 
-        modelo.addElement(new Mundos(jtf_mundoname.getText(), (double) Integer.parseInt(jtf_pesomundo.getText())));
-        jl_mundos.setModel(modelo);
-        jtf_mundoname.setText("");
-        jtf_pesomundo.setText("");
-        jd_cm.dispose();
+            modelo.addElement(new Mundos(jtf_mundoname.getText(), (double) Integer.parseInt(jtf_pesomundo.getText())));
+            jl_mundos.setModel(modelo);
+
+            jtf_mundoname.setText("");
+            jtf_pesomundo.setText("");
+            jd_cm.dispose();
+        }
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
     }//GEN-LAST:event_jButton6MouseClicked
 
     private void jtf_codActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_codActionPerformed
@@ -587,30 +631,36 @@ public class principal extends javax.swing.JFrame {
 
     private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
         // TODO add your handling code here:
+        try{
         DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_universo.getModel();
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         DefaultListModel modeloMUNDO = (DefaultListModel) jl_mundos.getModel();
         DefaultListModel modeloCRIATURA = (DefaultListModel) jl_criaturas.getModel();
         String mundo = "k", criatura;
+        Mundos mundo1 = new Mundos();
         //selectedElement.getLastPathComponent().getUserObject() instanceof Mundos)
         TreePath selectedElement
                 = (TreePath) jt_universo.getSelectionPath();
-        
+
         boolean hacer = true;
         boolean delmundo = false;
-        
+
         if (selectedElement != null && jl_criaturas.getSelectedIndex() >= 0 && jl_mundos.getSelectedIndex() < 0) {
             DefaultMutableTreeNode tmp = (DefaultMutableTreeNode) selectedElement.getLastPathComponent();
             if ((jl_mundos.getSelectedIndex() == -1) && (tmp.getUserObject() instanceof Mundos)) {
                 mundo = tmp.getUserObject().toString();
                 System.out.println(mundo);
-                
+                mundo1 = (Mundos) modeloMUNDO.get(jl_mundos.getSelectedIndex());
+
             }
         } else if ((jl_mundos.getSelectedIndex() >= 0 && jl_criaturas.getSelectedIndex() >= 0 && selectedElement == null)) {
             mundo = ((Mundos) modeloMUNDO.get(jl_mundos.getSelectedIndex())).getName();
             delmundo = true;
         } else {
             JOptionPane.showMessageDialog(this, "ERROR SELECCIONE SOLO LA CRIATURA Y UN MUNDO AL CUAL AGREGAR");
+            jl_mundos.setSelectedIndex(-1);
+            jl_criaturas.setSelectedIndex(-1);
+            jt_universo.setSelectionPath(null);
             hacer = false;
         }
         criatura = ((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())).getRaza();
@@ -627,8 +677,10 @@ public class principal extends javax.swing.JFrame {
                         }
                     }
                     if (!rep) {
+                        Criaturas tmp = ((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex()));
                         DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())));
                         ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                        peso += tmp.getPeso() * tmp.getCantidad();
                     } else {
                         JOptionPane.showMessageDialog(this, "CRIATURA YA ESTA EN ARBOL");
                     }
@@ -637,20 +689,27 @@ public class principal extends javax.swing.JFrame {
                 }
             }
             if (centinela == -1) {
+                Criaturas tmp = ((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex()));
+                peso += tmp.getPeso() * tmp.getCantidad();
                 DefaultMutableTreeNode n = new DefaultMutableTreeNode(mundo);
                 DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())));
+                peso += mundo1.getPeso();
                 n.add(p);
                 raiz.add(n);
             }
             modeloARBOL.reload();
             modeloCRIATURA.remove(jl_criaturas.getSelectedIndex());
-            if(delmundo){
-            modeloMUNDO.remove(jl_mundos.getSelectedIndex());
+            if (delmundo) {
+                modeloMUNDO.remove(jl_mundos.getSelectedIndex());
             }
-                
+
         }
         jl_mundos.setSelectedIndex(-1);
         jl_criaturas.setSelectedIndex(-1);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void jl_criaturasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_criaturasMouseClicked
@@ -679,8 +738,8 @@ public class principal extends javax.swing.JFrame {
 
     private void jt_universoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_universoMouseClicked
         // TODO add your handling code here:
-        
-            
+
+
     }//GEN-LAST:event_jt_universoMouseClicked
 
     private void agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarActionPerformed
@@ -701,13 +760,13 @@ public class principal extends javax.swing.JFrame {
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
         // TODO add your handling code here:
+        try{
         DefaultListModel modelo = (DefaultListModel) jl_mundos.getModel();
         String name = JOptionPane.showInputDialog("Ingrese nuevo nombre");
         boolean ver = false;
         Mundos temp = (Mundos) modelo.getElementAt(jl_mundos.getSelectedIndex());
         for (int i = 0; i < modelo.getSize(); i++) {
-            if ((((Mundos) modelo.get(i)).getName().equals(name))
-                    ) {
+            if ((((Mundos) modelo.get(i)).getName().equals(name))) {
                 ver = true;
             }
         }
@@ -718,13 +777,17 @@ public class principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "MUNDO YA ESTA EN LISTA");
         }
         jl_mundos.setModel(modelo);
-        
-        
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
+
+
     }//GEN-LAST:event_modificarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
         // TODO add your handling code here:
-        DefaultListModel model = (DefaultListModel)jl_mundos.getModel();
+        DefaultListModel model = (DefaultListModel) jl_mundos.getModel();
         model.remove(jl_mundos.getSelectedIndex());
     }//GEN-LAST:event_eliminarActionPerformed
 
@@ -746,13 +809,13 @@ public class principal extends javax.swing.JFrame {
 
     private void modificarcr1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarcr1ActionPerformed
         // TODO add your handling code here:
+        try{
         DefaultListModel modelo = (DefaultListModel) jl_criaturas.getModel();
         String name = JOptionPane.showInputDialog("Ingrese nuevo nombre");
         boolean ver = false;
         Criaturas temp = (Criaturas) modelo.getElementAt(jl_criaturas.getSelectedIndex());
         for (int i = 0; i < modelo.getSize(); i++) {
-            if ((((Criaturas) modelo.get(i)).getRaza().equals(name))
-                    ) {
+            if ((((Criaturas) modelo.get(i)).getRaza().equals(name))) {
                 ver = true;
             }
         }
@@ -763,6 +826,10 @@ public class principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "CRIATURA YA ESTA EN LISTA");
         }
         jl_criaturas.setModel(modelo);
+            
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, "ERROR METISTE LA PATA");
+        }
     }//GEN-LAST:event_modificarcr1ActionPerformed
 
     /**
@@ -860,7 +927,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu popupmundo;
     private javax.swing.JPopupMenu popupmundo1;
     // End of variables declaration//GEN-END:variables
-    
+
     Criaturas criatura_seleccionada;
     DefaultMutableTreeNode nodo_seleccionado;
+
 }
