@@ -51,7 +51,7 @@ public class Mundos {
 
     @Override
     public String toString() {
-        return "Mundos{" + "name=" + name + ", criaturas=" + criaturas + ", peso=" + peso + '}';
+        return name;
     }
 
     

@@ -92,7 +92,7 @@ public class Criaturas {
 
     @Override
     public String toString() {
-        return "Criaturas{" + "raza=" + raza + ", energia=" + energia + ", a\u00f1os=" + años + ", region=" + region + ", cantidad=" + cantidad + ", objetos=" + objetos + '}';
+        return raza;
     }
     
 }

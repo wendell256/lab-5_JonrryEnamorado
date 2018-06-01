@@ -7,6 +7,9 @@ package lab5_jonrryenamorado;
 
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -19,6 +22,7 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+        
     }
 
     /**
@@ -57,13 +61,22 @@ public class principal extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jtf_pesomundo = new javax.swing.JTextField();
         jd_eu = new javax.swing.JDialog();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jtf_cod = new javax.swing.JTextField();
+        jtf_edaduni = new javax.swing.JTextField();
+        jtf_pesouni = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jl_criaturas = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jl_mundos = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
+        jt_universo = new javax.swing.JTree();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -242,15 +255,90 @@ public class principal extends javax.swing.JFrame {
                 .addGap(23, 23, 23))
         );
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel12.setText("Universo Tali");
+
+        jLabel17.setText("Codigo:");
+
+        jLabel18.setText("Edad:");
+
+        jLabel19.setText("Peso:");
+
+        jtf_cod.setText(codigo);
+        jtf_cod.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_codActionPerformed(evt);
+            }
+        });
+
+        jtf_edaduni.setText(Double.toString(edad)
+        );
+
+        jtf_pesouni.setEditable(false);
+        jtf_pesouni.setText(Double.toString(peso)
+        );
+
+        jLabel20.setText("Modifique Datos");
+
+        jButton7.setText("Guardar");
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton7MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jd_euLayout = new javax.swing.GroupLayout(jd_eu.getContentPane());
         jd_eu.getContentPane().setLayout(jd_euLayout);
         jd_euLayout.setHorizontalGroup(
             jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_euLayout.createSequentialGroup()
+                .addGroup(jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_euLayout.createSequentialGroup()
+                        .addGap(106, 106, 106)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_euLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel20)
+                            .addGroup(jd_euLayout.createSequentialGroup()
+                                .addGroup(jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel19))
+                                .addGap(27, 27, 27)
+                                .addGroup(jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jd_euLayout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addComponent(jtf_cod, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jd_euLayout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(jtf_edaduni))
+                                    .addComponent(jtf_pesouni, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jButton7))))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
         jd_euLayout.setVerticalGroup(
             jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_euLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jLabel12)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel20)
+                .addGap(22, 22, 22)
+                .addGroup(jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(jtf_cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(jtf_edaduni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jd_euLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(jtf_pesouni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(jButton7)
+                .addGap(37, 37, 37))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -265,8 +353,8 @@ public class principal extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jl_mundos);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Universo Tali");
-        jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        jScrollPane3.setViewportView(jTree1);
+        jt_universo.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane3.setViewportView(jt_universo);
 
         jLabel2.setText("Bienvenido dios, ¿Qué desea realizar?");
 
@@ -291,7 +379,12 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Meter a Universo");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -404,9 +497,65 @@ public class principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultListModel modelo = (DefaultListModel) jl_mundos.getModel();
         
-        modelo.addElement(new Mundos(jtf_mundoname.getText(),(double)Integer.parseInt(jtf_pesomundo.getText()));
-        jl_criaturas.setModel(modelo);
+        modelo.addElement(new Mundos(jtf_mundoname.getText(),(double)Integer.parseInt(jtf_pesomundo.getText())));
+        jl_mundos.setModel(modelo);
+        jtf_mundoname.setText("");
+        jtf_pesomundo.setText("");
+        jd_cm.dispose();
     }//GEN-LAST:event_jButton6MouseClicked
+
+    private void jtf_codActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_codActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_codActionPerformed
+
+    private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
+        // TODO add your handling code here:
+        String tmp = jtf_cod.getText();
+        if(!tmp.contains("[a-zA-Z]+")&&!tmp.contains("[0-9]+")){
+            System.out.println("Bitch");
+        }
+    }//GEN-LAST:event_jButton7MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        DefaultTreeModel modeloARBOL = (DefaultTreeModel) jt_universo.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        DefaultListModel modeloMUNDO = (DefaultListModel) jl_mundos.getModel();
+        DefaultListModel modeloCRIATURA = (DefaultListModel) jl_criaturas.getModel();
+        String mundo, criatura;
+        mundo = ((Mundos) modeloMUNDO.get(jl_mundos.getSelectedIndex())).getName();
+        criatura = ((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())).getRaza();
+        
+        int centinela = -1;
+        boolean rep = false;
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+            if (raiz.getChildAt(i).toString().equals(mundo)) {
+
+                for (int j = 0; j < raiz.getChildAt(i).getChildCount(); j++) {
+                    if (raiz.getChildAt(i).getChildAt(j).toString().equals(criatura)) {
+                        rep = true;
+                    }
+                }
+                if (!rep) {
+                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())));
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                } else {
+                    JOptionPane.showMessageDialog(this, "PERSONA YA ESTA EN ARBOL");
+                }
+
+                centinela = 1;
+            }
+        }
+        if (centinela == -1) {
+            DefaultMutableTreeNode n = new DefaultMutableTreeNode(mundo);
+            DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())));
+            n.add(p);
+            raiz.add(n);
+        }
+        modeloARBOL.reload();
+        modeloCRIATURA.remove(jl_criaturas.getSelectedIndex());
+        modeloMUNDO.remove(jl_mundos.getSelectedIndex());
+    }//GEN-LAST:event_jButton4MouseClicked
 
     /**
      * @param args the command line arguments
@@ -450,14 +599,20 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -468,21 +623,28 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTree jTree1;
     private javax.swing.JDialog jd_cc;
     private javax.swing.JDialog jd_cm;
     private javax.swing.JDialog jd_eu;
     private javax.swing.JList<String> jl_criaturas;
     private javax.swing.JList<String> jl_mundos;
+    private javax.swing.JTree jt_universo;
     private javax.swing.JTextField jtf_cant;
+    private javax.swing.JTextField jtf_cod;
+    private javax.swing.JTextField jtf_edaduni;
     private javax.swing.JTextField jtf_energia;
     private javax.swing.JTextField jtf_maños;
     private javax.swing.JTextField jtf_mundoname;
     private javax.swing.JTextField jtf_objetos;
     private javax.swing.JTextField jtf_pesocriatura;
     private javax.swing.JTextField jtf_pesomundo;
+    private javax.swing.JTextField jtf_pesouni;
     private javax.swing.JTextField jtf_raza;
     private javax.swing.JTextField jtf_region;
     // End of variables declaration//GEN-END:variables
-    
+    String codigo = "00x000";
+    double edad = 0;
+    double peso = 0;
+    double pcriaturas = 0;
+    double pmundos = 0;
 }
