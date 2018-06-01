@@ -5,6 +5,9 @@
  */
 package lab5_jonrryenamorado;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author wende
@@ -27,7 +30,7 @@ public class principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jd_cm = new javax.swing.JDialog();
+        jd_cc = new javax.swing.JDialog();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -42,13 +45,23 @@ public class principal extends javax.swing.JFrame {
         jtf_region = new javax.swing.JTextField();
         jtf_cant = new javax.swing.JTextField();
         jtf_objetos = new javax.swing.JTextField();
-        jd_cc = new javax.swing.JDialog();
+        jButton5 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jtf_pesocriatura = new javax.swing.JTextField();
+        jd_cm = new javax.swing.JDialog();
+        jLabel13 = new javax.swing.JLabel();
+        jtf_mundoname = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jButton6 = new javax.swing.JButton();
+        jtf_pesomundo = new javax.swing.JTextField();
         jd_eu = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        jl_criaturas = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        jl_mundos = new javax.swing.JList<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
         jLabel2 = new javax.swing.JLabel();
@@ -74,17 +87,114 @@ public class principal extends javax.swing.JFrame {
 
         jLabel10.setText("Objetos:");
 
-        jtf_raza.setText("jTextField1");
+        jtf_region.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf_regionActionPerformed(evt);
+            }
+        });
 
-        jtf_energia.setText("jTextField2");
+        jButton5.setText("Crear Criatura");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
-        jtf_maños.setText("jTextField3");
+        jLabel11.setText("Peso:");
 
-        jtf_region.setText("jTextField4");
+        javax.swing.GroupLayout jd_ccLayout = new javax.swing.GroupLayout(jd_cc.getContentPane());
+        jd_cc.getContentPane().setLayout(jd_ccLayout);
+        jd_ccLayout.setHorizontalGroup(
+            jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ccLayout.createSequentialGroup()
+                .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_ccLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jtf_energia, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(jtf_maños)
+                            .addComponent(jtf_region)
+                            .addComponent(jtf_cant)
+                            .addComponent(jtf_pesocriatura)
+                            .addComponent(jtf_objetos)))
+                    .addGroup(jd_ccLayout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(jLabel4))
+                    .addGroup(jd_ccLayout.createSequentialGroup()
+                        .addGap(104, 104, 104)
+                        .addComponent(jLabel3))
+                    .addGroup(jd_ccLayout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jtf_raza, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jd_ccLayout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jButton5)))
+                .addGap(150, 150, 150))
+        );
+        jd_ccLayout.setVerticalGroup(
+            jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jd_ccLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jtf_raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jtf_energia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtf_maños, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtf_region, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(14, 14, 14)
+                .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtf_cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtf_objetos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(jtf_pesocriatura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(jButton5)
+                .addContainerGap())
+        );
 
-        jtf_cant.setText("jTextField5");
+        jLabel13.setText("Peso:");
 
-        jtf_objetos.setText("jTextField6");
+        jLabel14.setText("El todo poderoso a decidido crear un Mundo");
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel15.setText("Nuevo Mundo");
+
+        jLabel16.setText("Nombre:");
+
+        jButton6.setText("Crear Mundo");
+        jButton6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jd_cmLayout = new javax.swing.GroupLayout(jd_cm.getContentPane());
         jd_cm.getContentPane().setLayout(jd_cmLayout);
@@ -93,79 +203,43 @@ public class principal extends javax.swing.JFrame {
             .addGroup(jd_cmLayout.createSequentialGroup()
                 .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jd_cmLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtf_objetos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtf_cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jd_cmLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtf_raza, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jtf_maños, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jtf_energia, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jtf_region, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jd_cmLayout.createSequentialGroup()
-                        .addGap(104, 104, 104)
-                        .addComponent(jLabel3))
-                    .addGroup(jd_cmLayout.createSequentialGroup()
                         .addGap(130, 130, 130)
-                        .addComponent(jLabel4)))
-                .addContainerGap(150, Short.MAX_VALUE))
+                        .addComponent(jLabel15))
+                    .addGroup(jd_cmLayout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jButton6))
+                    .addGroup(jd_cmLayout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(jLabel14))
+                    .addGroup(jd_cmLayout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtf_mundoname, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtf_pesomundo, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         jd_cmLayout.setVerticalGroup(
             jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jd_cmLayout.createSequentialGroup()
                 .addGap(23, 23, 23)
-                .addComponent(jLabel4)
+                .addComponent(jLabel15)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jtf_mundoname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
                 .addGap(18, 18, 18)
                 .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jtf_raza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jtf_energia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtf_maños, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel8)
-                    .addComponent(jtf_region, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jtf_cant, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jd_cmLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(jtf_objetos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(64, 64, 64))
-        );
-
-        javax.swing.GroupLayout jd_ccLayout = new javax.swing.GroupLayout(jd_cc.getContentPane());
-        jd_cc.getContentPane().setLayout(jd_ccLayout);
-        jd_ccLayout.setHorizontalGroup(
-            jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jd_ccLayout.setVerticalGroup(
-            jd_ccLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+                    .addComponent(jtf_pesomundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addComponent(jButton6)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout jd_euLayout = new javax.swing.GroupLayout(jd_eu.getContentPane());
@@ -184,9 +258,11 @@ public class principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("El Universo Que Te Ama");
 
-        jScrollPane1.setViewportView(jList1);
+        jl_criaturas.setModel(new DefaultListModel());
+        jScrollPane1.setViewportView(jl_criaturas);
 
-        jScrollPane2.setViewportView(jList2);
+        jl_mundos.setModel(new DefaultListModel());
+        jScrollPane2.setViewportView(jl_mundos);
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Universo Tali");
         jTree1.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
@@ -195,10 +271,25 @@ public class principal extends javax.swing.JFrame {
         jLabel2.setText("Bienvenido dios, ¿Qué desea realizar?");
 
         jButton1.setText("Crear Mundo");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setText("Crear Criatura");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setText("Editar Universo");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setText("jButton4");
 
@@ -261,6 +352,62 @@ public class principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        jd_cm.setModal(true);
+        jd_cm.pack();
+        jd_cm.setLocationRelativeTo(this);
+        jd_cm.setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        jd_cc.setModal(true);
+        jd_cc.pack();
+        jd_cc.setLocationRelativeTo(this);
+        jd_cc.setVisible(true);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        jd_eu.setModal(true);
+        jd_eu.pack();
+        jd_eu.setLocationRelativeTo(this);
+        jd_eu.setVisible(true);
+    }//GEN-LAST:event_jButton3MouseClicked
+    private String [] objetos(String x){
+        String tokens[] = x.split(",");
+        return tokens;
+    }
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        DefaultListModel modelo = (DefaultListModel) jl_criaturas.getModel();
+        String objetos [] = objetos(jtf_objetos.getText());
+        modelo.addElement(new Criaturas(jtf_raza.getText(),(double)Integer.parseInt(jtf_energia.getText()),
+                    (double)Integer.parseInt(jtf_maños.getText()), 
+                    jtf_region.getText(), (double)Integer.parseInt(jtf_cant.getText()), objetos, (double)Integer.parseInt(jtf_pesocriatura.getText())));
+        jl_criaturas.setModel(modelo);
+        jd_cc.dispose();
+        jtf_cant.setText("");
+        jtf_raza.setText("");
+        jtf_energia.setText("");
+        jtf_maños.setText("");
+        jtf_region.setText("");
+
+    }//GEN-LAST:event_jButton5MouseClicked
+
+    private void jtf_regionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf_regionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf_regionActionPerformed
+
+    private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
+        // TODO add your handling code here:
+        DefaultListModel modelo = (DefaultListModel) jl_mundos.getModel();
+        
+        modelo.addElement(new Mundos(jtf_mundoname.getText(),(double)Integer.parseInt(jtf_pesomundo.getText()));
+        jl_criaturas.setModel(modelo);
+    }//GEN-LAST:event_jButton6MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -301,8 +448,15 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -311,8 +465,6 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -320,11 +472,17 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_cc;
     private javax.swing.JDialog jd_cm;
     private javax.swing.JDialog jd_eu;
+    private javax.swing.JList<String> jl_criaturas;
+    private javax.swing.JList<String> jl_mundos;
     private javax.swing.JTextField jtf_cant;
     private javax.swing.JTextField jtf_energia;
     private javax.swing.JTextField jtf_maños;
+    private javax.swing.JTextField jtf_mundoname;
     private javax.swing.JTextField jtf_objetos;
+    private javax.swing.JTextField jtf_pesocriatura;
+    private javax.swing.JTextField jtf_pesomundo;
     private javax.swing.JTextField jtf_raza;
     private javax.swing.JTextField jtf_region;
     // End of variables declaration//GEN-END:variables
+    
 }

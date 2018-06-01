@@ -17,6 +17,82 @@ public class Criaturas {
     private double años;
     private String region;
     private double cantidad;
-    private ArrayList<String> objetos;
+    private String[] objetos;
+    private double peso;
+
+    public Criaturas(String raza, double energia, double años, String region, double cantidad, String[] objetos, double peso) {
+        this.raza = raza;
+        this.energia = energia;
+        this.años = años;
+        this.region = region;
+        this.cantidad = cantidad;
+        this.objetos = objetos;
+        this.peso = peso;
+    }
+    
+    public Criaturas(String raza, double energia, double años, String region, double cantidad, String[] objetos) {
+        this.raza = raza;
+        this.energia = energia;
+        this.años = años;
+        this.region = region;
+        this.cantidad = cantidad;
+        this.objetos = objetos;
+    }
+
+    public Criaturas() {
+    }
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+
+    public double getEnergia() {
+        return energia;
+    }
+
+    public void setEnergia(double energia) {
+        this.energia = energia;
+    }
+
+    public double getAños() {
+        return años;
+    }
+
+    public void setAños(double años) {
+        this.años = años;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public double getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(double cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public String[] getObjetos() {
+        return objetos;
+    }
+
+    public void setObjetos(String[] objetos) {
+        this.objetos = objetos;
+    }
+
+    @Override
+    public String toString() {
+        return "Criaturas{" + "raza=" + raza + ", energia=" + energia + ", a\u00f1os=" + años + ", region=" + region + ", cantidad=" + cantidad + ", objetos=" + objetos + '}';
+    }
     
 }
