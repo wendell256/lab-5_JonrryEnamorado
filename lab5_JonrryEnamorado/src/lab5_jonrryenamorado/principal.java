@@ -10,6 +10,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 
 /**
  *
@@ -22,7 +23,7 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
-        
+
     }
 
     /**
@@ -468,17 +469,17 @@ public class principal extends javax.swing.JFrame {
         jd_eu.setLocationRelativeTo(this);
         jd_eu.setVisible(true);
     }//GEN-LAST:event_jButton3MouseClicked
-    private String [] objetos(String x){
+    private String[] objetos(String x) {
         String tokens[] = x.split(",");
         return tokens;
     }
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
         // TODO add your handling code here:
         DefaultListModel modelo = (DefaultListModel) jl_criaturas.getModel();
-        String objetos [] = objetos(jtf_objetos.getText());
-        modelo.addElement(new Criaturas(jtf_raza.getText(),(double)Integer.parseInt(jtf_energia.getText()),
-                    (double)Integer.parseInt(jtf_maños.getText()), 
-                    jtf_region.getText(), (double)Integer.parseInt(jtf_cant.getText()), objetos, (double)Integer.parseInt(jtf_pesocriatura.getText())));
+        String objetos[] = objetos(jtf_objetos.getText());
+        modelo.addElement(new Criaturas(jtf_raza.getText(), (double) Integer.parseInt(jtf_energia.getText()),
+                (double) Integer.parseInt(jtf_maños.getText()),
+                jtf_region.getText(), (double) Integer.parseInt(jtf_cant.getText()), objetos, (double) Integer.parseInt(jtf_pesocriatura.getText())));
         jl_criaturas.setModel(modelo);
         jd_cc.dispose();
         jtf_cant.setText("");
@@ -496,8 +497,8 @@ public class principal extends javax.swing.JFrame {
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
         // TODO add your handling code here:
         DefaultListModel modelo = (DefaultListModel) jl_mundos.getModel();
-        
-        modelo.addElement(new Mundos(jtf_mundoname.getText(),(double)Integer.parseInt(jtf_pesomundo.getText())));
+
+        modelo.addElement(new Mundos(jtf_mundoname.getText(), (double) Integer.parseInt(jtf_pesomundo.getText())));
         jl_mundos.setModel(modelo);
         jtf_mundoname.setText("");
         jtf_pesomundo.setText("");
@@ -511,7 +512,7 @@ public class principal extends javax.swing.JFrame {
     private void jButton7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseClicked
         // TODO add your handling code here:
         String tmp = jtf_cod.getText();
-        if(!tmp.contains("[a-zA-Z]+")&&!tmp.contains("[0-9]+")){
+        if (!tmp.contains("[a-zA-Z]+") && !tmp.contains("[0-9]+")) {
             System.out.println("Bitch");
         }
     }//GEN-LAST:event_jButton7MouseClicked
@@ -522,39 +523,64 @@ public class principal extends javax.swing.JFrame {
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modeloARBOL.getRoot();
         DefaultListModel modeloMUNDO = (DefaultListModel) jl_mundos.getModel();
         DefaultListModel modeloCRIATURA = (DefaultListModel) jl_criaturas.getModel();
-        String mundo, criatura;
-        mundo = ((Mundos) modeloMUNDO.get(jl_mundos.getSelectedIndex())).getName();
-        criatura = ((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())).getRaza();
-        
-        int centinela = -1;
-        boolean rep = false;
-        for (int i = 0; i < raiz.getChildCount(); i++) {
-            if (raiz.getChildAt(i).toString().equals(mundo)) {
-
-                for (int j = 0; j < raiz.getChildAt(i).getChildCount(); j++) {
-                    if (raiz.getChildAt(i).getChildAt(j).toString().equals(criatura)) {
-                        rep = true;
-                    }
-                }
-                if (!rep) {
-                    DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())));
-                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
-                } else {
-                    JOptionPane.showMessageDialog(this, "PERSONA YA ESTA EN ARBOL");
-                }
-
-                centinela = 1;
+        String mundo = "", criatura;
+        //selectedElement.getLastPathComponent().getUserObject() instanceof Mundos)
+        TreePath selectedElement
+                = (TreePath) jt_universo.getSelectionPath();
+        boolean hacer = true;
+        boolean delmundo = false;
+        if (selectedElement != null && jl_criaturas.getSelectedIndex() >= 0 && jl_mundos.getSelectedIndex() == -1) {
+            DefaultMutableTreeNode tmp = (DefaultMutableTreeNode) selectedElement.getLastPathComponent();
+            if ((jl_mundos.getSelectedIndex() == -1) && (tmp.getUserObject() instanceof Mundos)) {
+                mundo = tmp.getUserObject().toString();
+                System.out.println(mundo);
+                
             }
+        } else if ((jl_mundos.getSelectedIndex() >= 0 && jl_criaturas.getSelectedIndex() >= 0 && selectedElement == null)) {
+            mundo = ((Mundos) modeloMUNDO.get(jl_mundos.getSelectedIndex())).getName();
+            delmundo = true;
+        } else {
+            JOptionPane.showMessageDialog(this, "ERROR SELECCIONE SOLO LA CRIATURA Y UN MUNDO AL CUAL AGREGAR");
+            hacer = false;
         }
-        if (centinela == -1) {
-            DefaultMutableTreeNode n = new DefaultMutableTreeNode(mundo);
-            DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())));
-            n.add(p);
-            raiz.add(n);
+        criatura = ((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())).getRaza();
+
+        if (hacer) {
+            int centinela = -1;
+            boolean rep = false;
+            for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().equals(mundo)) {
+
+                    for (int j = 0; j < raiz.getChildAt(i).getChildCount(); j++) {
+                        if (raiz.getChildAt(i).getChildAt(j).toString().equals(criatura)) {
+                            rep = true;
+                        }
+                    }
+                    if (!rep) {
+                        DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())));
+                        ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "CRIATURA YA ESTA EN ARBOL");
+                    }
+
+                    centinela = 1;
+                }
+            }
+            if (centinela == -1) {
+                DefaultMutableTreeNode n = new DefaultMutableTreeNode(mundo);
+                DefaultMutableTreeNode p = new DefaultMutableTreeNode(((Criaturas) modeloCRIATURA.get(jl_criaturas.getSelectedIndex())));
+                n.add(p);
+                raiz.add(n);
+            }
+            modeloARBOL.reload();
+            modeloCRIATURA.remove(jl_criaturas.getSelectedIndex());
+            if(delmundo){
+            modeloMUNDO.remove(jl_mundos.getSelectedIndex());
+            }
+                
         }
-        modeloARBOL.reload();
-        modeloCRIATURA.remove(jl_criaturas.getSelectedIndex());
-        modeloMUNDO.remove(jl_mundos.getSelectedIndex());
+        jl_mundos.setSelectedIndex(-1);
+        jl_criaturas.setSelectedIndex(-1);
     }//GEN-LAST:event_jButton4MouseClicked
 
     /**
